@@ -25,7 +25,7 @@ public class ProjectService {
     public Project findProjectByIdentifier(String projectId) {
         Project project = projectRepository.findByProjectIdentifier(projectId);
         if (project == null) {
-            throw new ProjectIdException("Project id is not exist");
+            throw new ProjectIdException("Project id  not exist");
         }
         return project;
 
