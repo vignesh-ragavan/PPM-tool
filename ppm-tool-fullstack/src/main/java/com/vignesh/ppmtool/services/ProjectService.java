@@ -1,17 +1,33 @@
 package com.vignesh.ppmtool.services;
 
 import com.vignesh.ppmtool.domain.Project;
+import com.vignesh.ppmtool.exceptions.ProjectIdException;
 import com.vignesh.ppmtool.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService {
-   @Autowired
+    @Autowired
     private ProjectRepository projectRepository;
-    public Project saveOrUpdate(Project project)
-    {
-        return projectRepository.save(project);
+
+    public Project saveOrUpdate(Project project) {
+
+        try {
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+
+        } catch (Exception e) {
+            throw new ProjectIdException("Project id is already required");
+        }
     }
 
+    public Project findProjectByIdentifier(String projectId) {
+        Project project = projectRepository.findByProjectIdentifier(projectId);
+        if (project == null) {
+            throw new ProjectIdException("Project id is not exist");
+        }
+        return project;
+
+    }
 }
