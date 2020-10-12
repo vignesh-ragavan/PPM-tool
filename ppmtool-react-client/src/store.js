@@ -16,6 +16,7 @@ if (window.navigator.userAgent.includes("Chrome") && ReactReduxDevTools) {
     initalState,
     compose(
       applyMiddleware(...middleware),
+      
       ReactReduxDevTools
     )
   );
