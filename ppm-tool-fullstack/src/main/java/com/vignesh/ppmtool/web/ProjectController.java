@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/project")
+@CrossOrigin()
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
@@ -26,9 +27,9 @@ public class ProjectController {
     @PostMapping("")
     public ResponseEntity<?> createProject(@Valid @RequestBody Project project , BindingResult result)
     {
-       ResponseEntity<?> errorMap =mapValidationErrorService.MapValidationService(result);
-       if(errorMap!=null)
-           return errorMap;
+        ResponseEntity<?> errorMap =mapValidationErrorService.MapValidationService(result);
+        if(errorMap!=null)
+            return errorMap;
 
         Project project1=projectService.saveOrUpdate(project);
         return new ResponseEntity<Project>(project, HttpStatus.CREATED);
