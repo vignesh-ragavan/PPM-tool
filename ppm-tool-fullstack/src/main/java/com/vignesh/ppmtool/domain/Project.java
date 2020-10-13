@@ -88,5 +88,16 @@ public class Project {
     protected void onUpdate(){
         this.updated_At=new Date();
     }
+
+    @OneToOne(mappedBy = "project", optional = false)
+    private Backlog backlog;
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
 }
 

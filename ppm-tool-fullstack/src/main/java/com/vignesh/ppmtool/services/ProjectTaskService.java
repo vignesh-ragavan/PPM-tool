@@ -1,5 +1,10 @@
 package com.vignesh.ppmtool.services;
 
+import com.vignesh.ppmtool.domain.Backlog;
+import com.vignesh.ppmtool.domain.ProjectTask;
+import com.vignesh.ppmtool.repositories.BacklogRepository;
+import com.vignesh.ppmtool.repositories.ProjectRepository;
+import com.vignesh.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
