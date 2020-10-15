@@ -2,17 +2,16 @@ package com.vignesh.ppmtool.Security;
 
 
 import com.vignesh.ppmtool.domain.User;
-import io.jsonwebtoken.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import io.jsonwebtoken.*;
 
-import static com.vignesh.ppmtool.Security.SecurityConstants.EXPIRATION_TIME;
-import static com.vignesh.ppmtool.Security.SecurityConstants.SECRET;
 
+import static com.vignesh.ppmtool.Security.SecurityConstants.*;
 
 @Component
 public class JwtTokenProvider {
@@ -37,14 +36,14 @@ public class JwtTokenProvider {
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
     }
 
     //Validate the token
     public boolean validateToken(String token){
         try{
-            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
             return true;
         }catch (SignatureException ex){
             System.out.println("Invalid JWT Signature");
@@ -64,7 +63,7 @@ public class JwtTokenProvider {
     //Get user Id from token
 
     public Long getUserIdFromJWT(String token){
-        Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
+        Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
         String id = (String)claims.get("id");
 
         return Long.parseLong(id);
