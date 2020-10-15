@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-    import static com.vignesh.ppmtool.Security.SecurityConstants.EXPIRATION_TIME;
-    import static com.vignesh.ppmtool.Security.SecurityConstants.SECRET;
+import static com.vignesh.ppmtool.Security.SecurityConstants.EXPIRATION_TIME;
+import static com.vignesh.ppmtool.Security.SecurityConstants.SECRET;
 
 
 @Component
@@ -57,3 +57,16 @@ public class JwtTokenProvider {
         }catch (IllegalArgumentException ex){
             System.out.println("JWT claims string is empty");
         }
+        return false;
+    }
+
+
+    //Get user Id from token
+
+    public Long getUserIdFromJWT(String token){
+        Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
+        String id = (String)claims.get("id");
+
+        return Long.parseLong(id);
+    }
+}
