@@ -42,8 +42,11 @@ class AddProject extends Component {
       end_date: this.state.end_date
     };
     this.props.createProject(newProject, this.props.history);
+<<<<<<< HEAD
     console.log(this.props);
     console.log(newProject);
+=======
+>>>>>>> ProjecttaskBacklog
   }
 
   render() {
@@ -155,4 +158,8 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { createProject }
+<<<<<<< HEAD
 )(AddProject);
+=======
+)(AddProject);
+>>>>>>> ProjecttaskBacklog

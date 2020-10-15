@@ -1,5 +1,9 @@
 import axios from "axios";
+<<<<<<< HEAD
 import { GET_ERRORS,GET_PROJECTS,GET_PROJECT } from "./types";
+=======
+import { GET_ERRORS,GET_PROJECTS,GET_PROJECT ,DELETE_PROJECT} from "./types";
+>>>>>>> ProjecttaskBacklog
 
 export const createProject = (project, history) => async dispatch => {
   try {
@@ -45,4 +49,20 @@ export const getProject=(id,history)=>async dispatch=>{
     history.push("/dashboard")
   }
 
+<<<<<<< HEAD
  };
+=======
+ };export const deleteProject = id => async dispatch => {
+  if (
+    window.confirm(
+      "Are you sure? This will delete the project and all the data related to it"
+    )
+  ) {
+    await axios.delete(`/api/project/${id}`);
+    dispatch({
+      type: DELETE_PROJECT,
+      payload: id
+    });
+  }
+};
+>>>>>>> ProjecttaskBacklog
