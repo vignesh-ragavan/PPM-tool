@@ -12,11 +12,13 @@ class Login extends Component {
       password: "",
       errors: {}
     };
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
+
     if (this.props.security.validToken) {
       this.props.history.push("/dashboard");
     }

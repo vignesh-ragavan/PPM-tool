@@ -10,6 +10,7 @@ class Header extends Component {
     window.location.href = "/";
   }
   render() {
+
     const { validToken, user } = this.props.security;
 
     const userIsAuthenticated = (

@@ -1,5 +1,5 @@
 import axios from "axios";
-import projectReducers from "../reducers/projectReducers";
+import projectReducers from "../reducers/projectReducer";
 import { GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "./types";
 
 export const createProject = (project, history) => async dispatch => {
@@ -8,7 +8,7 @@ export const createProject = (project, history) => async dispatch => {
     history.push("/dashboard");
     dispatch({
       type: GET_PROJECTS,
-      payload: project.project
+      payload: {}
     });
   } catch (err) {
     dispatch({
