@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { createProject } from "../../actions/projectAction";
+import { createProject } from "../../actions/projectActions";
 import classnames from "classnames";
 
 class AddProject extends Component {
@@ -42,11 +42,6 @@ class AddProject extends Component {
       end_date: this.state.end_date
     };
     this.props.createProject(newProject, this.props.history);
-<<<<<<< HEAD
-    console.log(this.props);
-    console.log(newProject);
-=======
->>>>>>> ProjecttaskBacklog
   }
 
   render() {
@@ -158,8 +153,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { createProject }
-<<<<<<< HEAD
 )(AddProject);
-=======
-)(AddProject);
->>>>>>> ProjecttaskBacklog
